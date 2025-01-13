@@ -108,7 +108,7 @@ class OT2_wrapper(gym.Env):
         # EXPERIMENT HERE <3
         reward, distance = self.compute_reward(observation)
 
-        terminated, termination_reason = self.check_termination(reward)
+        terminated, termination_reason = self.check_termination(distance)
 
         # Truncate the training episode if the maximum of steps is reached
         # Because the step() function requires a dictionary to be returned with info no matter the outcome we return some useful information
