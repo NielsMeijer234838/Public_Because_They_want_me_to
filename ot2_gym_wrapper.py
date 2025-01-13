@@ -147,6 +147,7 @@ class OT2_wrapper(gym.Env):
         # Because the distance from the pipette to the goal is variable on initialisation we set initial distance after a single step and only of the instance does not have this property yet
         if not hasattr(self, "initial_distance"):
             self.initial_distance = distance
+            self.previous_distance = distance
 
         for milestone in self.milestones[:]:
             # If previous distance is greater than milestone and current distance smaller than a milestone distance give extra reward
