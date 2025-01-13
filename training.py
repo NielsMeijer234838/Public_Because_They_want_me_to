@@ -38,8 +38,7 @@ model = PPO('MlpPolicy', env, verbose=1,
             learning_rate=args.learning_rate, 
             batch_size=args.batch_size, 
             n_steps=args.n_steps, 
-            n_epochs=args.n_epochs, 
-            tensorboard_log=f"runs/{run.id}",)
+            n_epochs=args.n_epochs)
 
 # create wandb callback
 wandb_callback = WandbCallback(model_save_freq=20000,
@@ -48,4 +47,5 @@ wandb_callback = WandbCallback(model_save_freq=20000,
                                 )
 
 # add wandb callback to the model training
-model.learn(total_timesteps=5000000, callback=wandb_callback, progress_bar=True, reset_num_timesteps=False,tb_log_name=f"runs/{run.id}")
+#model.learn(total_timesteps=5000000, callback=wandb_callback, progress_bar=True, reset_num_timesteps=False,tb_log_name=f"runs/{run.id}")
+model.learn(total_timesteps=5000000, callback=wandb_callback, progress_bar=True, reset_num_timesteps=False)
