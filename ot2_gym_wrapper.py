@@ -4,6 +4,7 @@ from gymnasium import spaces
 import numpy as np
 from sim_class import Simulation
 import pybullet as p
+from typing_extensions import TypeIs
 
 
 class OT2_wrapper(gym.Env):
