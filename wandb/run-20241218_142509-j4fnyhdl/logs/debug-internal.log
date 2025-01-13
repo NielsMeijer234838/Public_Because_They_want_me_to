@@ -1,0 +1,17 @@
+{"time":"2024-12-18T14:25:09.82569611+01:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2024-12-18T14:25:09.825714338+01:00","level":"INFO","msg":"created symlink","path":"/home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/wandb/run-20241218_142509-j4fnyhdl/logs/debug-core.log"}
+{"time":"2024-12-18T14:25:09.928942523+01:00","level":"INFO","msg":"created new stream","id":"j4fnyhdl"}
+{"time":"2024-12-18T14:25:09.928998255+01:00","level":"INFO","msg":"stream: started","id":"j4fnyhdl"}
+{"time":"2024-12-18T14:25:09.929054267+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"j4fnyhdl"}
+{"time":"2024-12-18T14:25:09.929191993+01:00","level":"INFO","msg":"sender: started","stream_id":"j4fnyhdl"}
+{"time":"2024-12-18T14:25:09.929248214+01:00","level":"INFO","msg":"handler: started","stream_id":"j4fnyhdl"}
+{"time":"2024-12-18T14:25:10.319341357+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-18T14:25:20.437331348+01:00","level":"INFO","msg":"tensorboard: no root directory after 10 seconds, using working directory"}
+{"time":"2024-12-18T14:27:09.872646827+01:00","level":"INFO","msg":"stream: closing","id":"j4fnyhdl"}
+{"time":"2024-12-18T14:27:09.872695018+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-18T14:27:09.873321921+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-18T14:27:11.251205556+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-18T14:27:11.564270979+01:00","level":"INFO","msg":"handler: closed","stream_id":"j4fnyhdl"}
+{"time":"2024-12-18T14:27:11.564576469+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"j4fnyhdl"}
+{"time":"2024-12-18T14:27:11.564626546+01:00","level":"INFO","msg":"sender: closed","stream_id":"j4fnyhdl"}
+{"time":"2024-12-18T14:27:11.564705258+01:00","level":"INFO","msg":"stream: closed","id":"j4fnyhdl"}

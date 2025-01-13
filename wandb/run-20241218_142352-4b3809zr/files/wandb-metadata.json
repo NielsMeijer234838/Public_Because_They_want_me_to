@@ -1,0 +1,30 @@
+{
+  "os": "Linux-6.12.4-arch1-1-x86_64-with-glibc2.40",
+  "python": "CPython 3.10.16",
+  "startedAt": "2024-12-18T13:23:52.812826Z",
+  "program": "/home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/training.py",
+  "codePath": "sim/training.py",
+  "git": {
+    "commit": "3c2a836a3fbf1cbf57aeda0e5c11463d1cf3938d"
+  },
+  "email": "234838@buas.nl",
+  "root": "/home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim",
+  "host": "Ketamine",
+  "executable": "/home/ketamine/.conda/envs/Test_pybullet/bin/python",
+  "codePathLocal": "training.py",
+  "cpu_count": 6,
+  "cpu_count_logical": 6,
+  "disk": {
+    "/": {
+      "total": "501859205120",
+      "used": "276688322560"
+    }
+  },
+  "memory": {
+    "total": "16102977536"
+  },
+  "cpu": {
+    "count": 6,
+    "countLogical": 6
+  }
+}

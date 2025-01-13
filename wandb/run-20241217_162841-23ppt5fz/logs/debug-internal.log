@@ -1,0 +1,3 @@
+{"time":"2024-12-17T16:28:41.669509237+01:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2024-12-17T16:28:41.669523625+01:00","level":"INFO","msg":"created symlink","path":"/home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/wandb/run-20241217_162841-23ppt5fz/logs/debug-core.log"}
+{"time":"2024-12-17T16:28:41.669573632+01:00","level":"ERROR+4","msg":"stream_init: failed to fetch credentials: couldn't get API key: settings: failed to get API key from netrc: open /home/ketamine/.netrc: no such file or directory"}

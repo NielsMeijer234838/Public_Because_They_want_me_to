@@ -1,0 +1,109 @@
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_setup.py:_flush():68] Current SDK version is 0.19.1
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_setup.py:_flush():68] Configure stats pid to 29345
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_setup.py:_flush():68] Loading settings from /home/ketamine/.config/wandb/settings
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_setup.py:_flush():68] Loading settings from /home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/wandb/settings
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_init.py:_log_setup():528] Logging user logs to /home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/wandb/run-20241218_142509-j4fnyhdl/logs/debug.log
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_init.py:_log_setup():529] Logging internal logs to /home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/wandb/run-20241218_142509-j4fnyhdl/logs/debug-internal.log
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_init.py:init():644] calling init triggers
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_init.py:init():650] wandb.init called with sweep_config: {}
+config: {}
+2024-12-18 14:25:09,817 INFO    MainThread:29345 [wandb_init.py:init():680] starting backend
+2024-12-18 14:25:09,818 INFO    MainThread:29345 [wandb_init.py:init():684] sending inform_init request
+2024-12-18 14:25:09,822 INFO    MainThread:29345 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-12-18 14:25:09,823 INFO    MainThread:29345 [wandb_init.py:init():697] backend started and connected
+2024-12-18 14:25:09,824 INFO    MainThread:29345 [wandb_init.py:init():790] updated telemetry
+2024-12-18 14:25:09,829 INFO    MainThread:29345 [wandb_init.py:init():822] communicating run to backend with 90.0 second timeout
+2024-12-18 14:25:10,311 INFO    MainThread:29345 [wandb_init.py:init():874] starting run threads in backend
+2024-12-18 14:25:10,395 INFO    MainThread:29345 [wandb_run.py:_console_start():2374] atexit reg
+2024-12-18 14:25:10,395 INFO    MainThread:29345 [wandb_run.py:_redirect():2224] redirect: wrap_raw
+2024-12-18 14:25:10,395 INFO    MainThread:29345 [wandb_run.py:_redirect():2289] Wrapping output streams.
+2024-12-18 14:25:10,395 INFO    MainThread:29345 [wandb_run.py:_redirect():2314] Redirects installed.
+2024-12-18 14:25:10,397 INFO    MainThread:29345 [wandb_init.py:init():916] run started, returning control to user process
+2024-12-18 14:25:10,409 INFO    MainThread:29345 [wandb_run.py:_tensorboard_callback():1436] tensorboard callback: runs/j4fnyhdl/runs/j4fnyhdl_1, True
+2024-12-18 14:25:10,412 INFO    MainThread:29345 [wandb_run.py:_config_callback():1279] config_cb None None {'algo': 'PPO', 'policy_class': "<class 'stable_baselines3.common.policies.ActorCriticPolicy'>", 'device': 'cpu', 'verbose': 1, 'policy_kwargs': '{}', 'num_timesteps': 0, '_total_timesteps': 1000000000, '_num_timesteps_at_start': 0, 'seed': 'None', 'action_noise': 'None', 'start_time': 1734528310402041285, 'learning_rate': 0.0003, 'tensorboard_log': 'runs/j4fnyhdl', '_last_obs': '[[ 0.073       0.0895      0.1195     -0.0291385  -0.14125377  0.20535468]]', '_last_episode_starts': '[ True]', '_last_original_obs': 'None', '_episode_num': 0, 'use_sde': 'False', 'sde_sample_freq': -1, '_current_progress_remaining': 1.0, '_stats_window_size': 100, 'ep_info_buffer': 'deque([], maxlen=100)', 'ep_success_buffer': 'deque([], maxlen=100)', '_n_updates': 0, '_custom_logger': 'False', 'env': '<stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x77ecb5dba560>', '_vec_normalize_env': 'None', 'observation_space': 'Box(-1.0, 1.0, (6,), float32)', 'action_space': 'Box(-1.0, 1.0, (3,), float32)', 'n_envs': 1, 'n_steps': 2048, 'gamma': 0.99, 'gae_lambda': 0.95, 'ent_coef': 0.0, 'vf_coef': 0.5, 'max_grad_norm': 0.5, 'rollout_buffer_class': "<class 'stable_baselines3.common.buffers.RolloutBuffer'>", 'rollout_buffer_kwargs': '{}', 'batch_size': 64, 'n_epochs': 10, 'clip_range': '<function get_schedule_fn.<locals>.<lambda> at 0x77ecb54181f0>', 'clip_range_vf': 'None', 'normalize_advantage': 'True', 'target_kl': 'None', 'lr_schedule': '<function get_schedule_fn.<locals>.<lambda> at 0x77ecd9132830>', 'rollout_buffer': '<stable_baselines3.common.buffers.RolloutBuffer object at 0x77ecb5db8d60>', 'policy': 'ActorCriticPolicy(\n  (features_extractor): FlattenExtractor(\n    (flatten): Flatten(start_dim=1, end_dim=-1)\n  )\n  (pi_features_extractor): FlattenExtractor(\n    (flatten): Flatten(start_dim=1, end_dim=-1)\n  )\n  (vf_features_extractor): FlattenExtractor(\n    (flatten): Flatten(start_dim=1, end_dim=-1)\n  )\n  (mlp_extractor): MlpExtractor(\n    (policy_net): Sequential(\n      (0): Linear(in_features=6, out_features=64, bias=True)\n      (1): Tanh()\n      (2): Linear(in_features=64, out_features=64, bias=True)\n      (3): Tanh()\n    )\n    (value_net): Sequential(\n      (0): Linear(in_features=6, out_features=64, bias=True)\n      (1): Tanh()\n      (2): Linear(in_features=64, out_features=64, bias=True)\n      (3): Tanh()\n    )\n  )\n  (action_net): Linear(in_features=64, out_features=3, bias=True)\n  (value_net): Linear(in_features=64, out_features=1, bias=True)\n)', '_logger': '<stable_baselines3.common.logger.Logger object at 0x77ecbc1c91b0>'}
+2024-12-18 14:25:11,211 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:11,900 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:13,823 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:14,513 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:16,299 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:17,070 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:19,003 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:19,716 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:22,318 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:23,043 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:24,872 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:25,585 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:27,640 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:28,426 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:30,268 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:30,967 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:32,953 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:33,786 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:35,610 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:36,297 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:38,018 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:38,759 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:40,527 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:41,266 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:43,270 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:44,024 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:45,887 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:46,651 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:48,576 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:49,262 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:51,055 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:51,739 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:53,500 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:54,229 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:56,836 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:25:57,637 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:00,034 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:00,858 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:03,886 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:04,692 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:06,738 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:07,572 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:08,349 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:10,689 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:11,455 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:13,651 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:14,398 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:16,160 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:16,879 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:18,690 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:19,404 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:21,321 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:22,086 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:24,272 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:25,047 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:27,210 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:27,959 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:29,930 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:30,683 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:32,682 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:33,527 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:35,674 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:36,421 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:39,980 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:40,830 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:42,773 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:43,540 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:45,714 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:46,499 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:48,567 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:49,379 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:51,467 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:52,292 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:54,639 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:55,451 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:57,632 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:26:58,481 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:00,485 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:01,233 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:03,636 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:04,454 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:06,645 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:07,463 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:09,482 INFO    MainThread:29345 [sb3.py:save_model():147] Saving model checkpoint to models/j4fnyhdl/model.zip
+2024-12-18 14:27:09,872 WARNING MsgRouterThr:29345 [router.py:message_loop():75] message_loop has been closed

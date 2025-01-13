@@ -1,0 +1,17 @@
+{"time":"2024-12-18T14:29:57.664712+01:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2024-12-18T14:29:57.664743919+01:00","level":"INFO","msg":"created symlink","path":"/home/ketamine/Documents/Buas/Year2/2024-25-Y2-BlockB/sim/wandb/run-20241218_142957-ibanu320/logs/debug-core.log"}
+{"time":"2024-12-18T14:29:57.768508565+01:00","level":"INFO","msg":"created new stream","id":"ibanu320"}
+{"time":"2024-12-18T14:29:57.768555919+01:00","level":"INFO","msg":"stream: started","id":"ibanu320"}
+{"time":"2024-12-18T14:29:57.768601526+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"ibanu320"}
+{"time":"2024-12-18T14:29:57.768637705+01:00","level":"INFO","msg":"sender: started","stream_id":"ibanu320"}
+{"time":"2024-12-18T14:29:57.768616962+01:00","level":"INFO","msg":"handler: started","stream_id":"ibanu320"}
+{"time":"2024-12-18T14:29:58.071038141+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-18T14:30:08.218107484+01:00","level":"INFO","msg":"tensorboard: no root directory after 10 seconds, using working directory"}
+{"time":"2024-12-18T14:58:42.139865101+01:00","level":"INFO","msg":"stream: closing","id":"ibanu320"}
+{"time":"2024-12-18T14:58:42.140281928+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-18T14:58:42.147458984+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-18T14:58:43.337967485+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-18T14:58:43.626225062+01:00","level":"INFO","msg":"handler: closed","stream_id":"ibanu320"}
+{"time":"2024-12-18T14:58:43.626311599+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ibanu320"}
+{"time":"2024-12-18T14:58:43.626995367+01:00","level":"INFO","msg":"sender: closed","stream_id":"ibanu320"}
+{"time":"2024-12-18T14:58:43.627049636+01:00","level":"INFO","msg":"stream: closed","id":"ibanu320"}
