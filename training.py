@@ -7,6 +7,7 @@ import argparse
 from clearml import Task
 from typing_extensions import TypeIs
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--learning_rate", type=float, default=0.0003)
