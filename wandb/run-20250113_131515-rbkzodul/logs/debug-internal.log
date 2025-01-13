@@ -1,0 +1,17 @@
+{"time":"2025-01-13T13:15:15.491335646+01:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2025-01-13T13:15:15.491362026+01:00","level":"INFO","msg":"created symlink","path":"/home/ketamine/Documents/Buas/Year2/Training_remote/Public_Because_They_want_me_to/wandb/run-20250113_131515-rbkzodul/logs/debug-core.log"}
+{"time":"2025-01-13T13:15:15.594216779+01:00","level":"INFO","msg":"created new stream","id":"rbkzodul"}
+{"time":"2025-01-13T13:15:15.594258948+01:00","level":"INFO","msg":"stream: started","id":"rbkzodul"}
+{"time":"2025-01-13T13:15:15.594269979+01:00","level":"INFO","msg":"handler: started","stream_id":"rbkzodul"}
+{"time":"2025-01-13T13:15:15.594299985+01:00","level":"INFO","msg":"sender: started","stream_id":"rbkzodul"}
+{"time":"2025-01-13T13:15:15.594317147+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"rbkzodul"}
+{"time":"2025-01-13T13:15:15.929888858+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-13T13:15:26.043677982+01:00","level":"INFO","msg":"tensorboard: no root directory after 10 seconds, using working directory"}
+{"time":"2025-01-13T13:15:30.049692341+01:00","level":"INFO","msg":"stream: closing","id":"rbkzodul"}
+{"time":"2025-01-13T13:15:30.049783483+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-13T13:15:30.050388671+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-13T13:15:30.844023906+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-13T13:15:31.148109634+01:00","level":"INFO","msg":"handler: closed","stream_id":"rbkzodul"}
+{"time":"2025-01-13T13:15:31.148136104+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rbkzodul"}
+{"time":"2025-01-13T13:15:31.148165809+01:00","level":"INFO","msg":"sender: closed","stream_id":"rbkzodul"}
+{"time":"2025-01-13T13:15:31.148239899+01:00","level":"INFO","msg":"stream: closed","id":"rbkzodul"}

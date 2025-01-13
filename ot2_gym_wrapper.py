@@ -7,7 +7,7 @@ import pybullet as p
 
 
 class OT2_wrapper(gym.Env):
-    def __init__(self, milestones, render=False, max_steps=1000):
+    def __init__(self, milestones, render=False, max_steps=1000, threshold=0.001):
         # Calls the constructor off the parent class while being bound to the instance of this wrapper
         super(OT2_wrapper, self).__init__()
 
@@ -18,6 +18,7 @@ class OT2_wrapper(gym.Env):
         self.max_steps = max_steps
         self.goal_position = None
         self.milestones = milestones
+        self.distance_threshold = threshold
 
         # Sets a pybullet simulation instance with only 1 agent as multiple are not reported
         self.sim = Simulation(render=render, num_agents=1)
@@ -181,45 +182,6 @@ class OT2_wrapper(gym.Env):
         """Closes the simulation
         """
         self.sim.close()
-
-# class GoalVisualizer:
-#     def __init__(self, simulation):
-#         """
-#         Initialize the visualizer with a PyBullet simulation object.
-#         """
-#         self.sim = simulation
-#         self.goal_marker_ids = []  # To track debug items for cleanup
-
-#     def draw_goal(self, goal_position, radius=0.05, color=[0, 1, 0]):
-#         """
-#         Draws a simple representation of the goal as crosshairs in the PyBullet simulation.
-#         """
-#         # Clear previous markers
-#         self.clear_goal_markers()
-
-#         # Draw crosshairs to represent the goal position
-#         axis_lines = [
-#             ([goal_position[0] - radius, goal_position[1], goal_position[2]],
-#             [goal_position[0] + radius, goal_position[1], goal_position[2]]),
-#             ([goal_position[0], goal_position[1] - radius, goal_position[2]],
-#             [goal_position[0], goal_position[1] + radius, goal_position[2]]),
-#             ([goal_position[0], goal_position[1], goal_position[2] - radius],
-#             [goal_position[0], goal_position[1], goal_position[2] + radius]),
-#         ]
-
-#         for start, end in axis_lines:
-#             marker_id = p.addUserDebugLine(start, end, lineColorRGB=color, lineWidth=2.0)
-#             self.goal_marker_ids.append(marker_id)
-
-
-#     def clear_goal_markers(self):
-#         """
-#         Removes all previous goal markers from the simulation.
-#         """
-#         for marker_id in self.goal_marker_ids:
-#             p.removeUserDebugItem(marker_id)
-#         self.goal_marker_ids = []
-
 
 if __name__ == '__main__':
     from stable_baselines3.common.env_checker import check_env
