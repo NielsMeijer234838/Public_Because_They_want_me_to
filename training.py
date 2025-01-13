@@ -16,7 +16,7 @@ parser.add_argument("--milestones", type=list, default=[round(i * 0.05, 2) for i
 args = parser.parse_args()
 
 task = Task.init(project_name='Mentor Group J/Group 3', # NB: Replace YourName with your own name
-                    task_name='Baseline')
+                    task_name='Baseline', debug=True)
 
 task.set_base_docker('deanis/2023y2b-rl:latest')
 
