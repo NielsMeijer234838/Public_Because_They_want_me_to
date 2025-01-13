@@ -31,7 +31,7 @@ env = OT2_wrapper(args.milestones, max_steps=1000)
 model = PPO('MlpPolicy', env, verbose=1)
 
 # initialize wandb project
-run = wandb.init(project="sb3_OT2",sync_tensorboard=True)
+run = wandb.init(project="sb3_OT2")
 
 # add tensorboard logging to the model
 model = PPO('MlpPolicy', env, verbose=1, 
