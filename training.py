@@ -6,6 +6,7 @@ import os
 import argparse
 from clearml import Task
 from typing_extensions import TypeIs
+import tensorflow
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 

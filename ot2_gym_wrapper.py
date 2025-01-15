@@ -4,11 +4,10 @@ from gymnasium import spaces
 import numpy as np
 from sim_class import Simulation
 import pybullet as p
-from typing_extensions import TypeIs
 
 
 class OT2_wrapper(gym.Env):
-    def __init__(self, milestones, render=False, max_steps=1000, threshold=0.001):
+    def __init__(self, render=False, max_steps=1000):
         # Calls the constructor off the parent class while being bound to the instance of this wrapper
         super(OT2_wrapper, self).__init__()
 
@@ -18,8 +17,6 @@ class OT2_wrapper(gym.Env):
         # Sets some properties that are used during the training of a model
         self.max_steps = max_steps
         self.goal_position = None
-        self.milestones = milestones
-        self.distance_threshold = threshold
 
         # Sets a pybullet simulation instance with only 1 agent as multiple are not reported
         self.sim = Simulation(render=render, num_agents=1)
@@ -108,7 +105,7 @@ class OT2_wrapper(gym.Env):
         # EXPERIMENT HERE <3
         reward, distance = self.compute_reward(observation)
 
-        terminated, termination_reason = self.check_termination(distance)
+        terminated, termination_reason = self.check_termination(reward)
 
         # Truncate the training episode if the maximum of steps is reached
         # Because the step() function requires a dictionary to be returned with info no matter the outcome we return some useful information
@@ -144,25 +141,8 @@ class OT2_wrapper(gym.Env):
         # Eucludian distance, hell yeah https://www.tiktok.com/@sivartstock/video/7264039747142618373
         distance = np.linalg.norm(observation[:3] - observation[3:6])
         distance_penalty = distance
-        milestone_reward = 0
 
-        # Because the distance from the pipette to the goal is variable on initialisation we set initial distance after a single step and only of the instance does not have this property yet
-        if not hasattr(self, "initial_distance"):
-            self.initial_distance = distance
-            self.previous_distance = distance
-
-        for milestone in self.milestones[:]:
-            # If previous distance is greater than milestone and current distance smaller than a milestone distance give extra reward
-            # This function is bugged however and always gives a milestone reward once a milestone has been reached
-            # Milestones should be popped from the array so they cant be abused
-            if self.previous_distance > milestone * self.initial_distance and distance <= milestone * self.initial_distance:
-                milestone_reward += 20
-                self.milestones.remove(milestone)
-
-        # Resets previous distance for next reward
-        self.previous_distance = distance
-
-        return -distance_penalty * 2 + milestone_reward, distance
+        return -distance_penalty
 
 
     def check_termination(self, distance):
@@ -184,6 +164,45 @@ class OT2_wrapper(gym.Env):
         """
         self.sim.close()
 
+# class GoalVisualizer:
+#     def __init__(self, simulation):
+#         """
+#         Initialize the visualizer with a PyBullet simulation object.
+#         """
+#         self.sim = simulation
+#         self.goal_marker_ids = []  # To track debug items for cleanup
+
+#     def draw_goal(self, goal_position, radius=0.05, color=[0, 1, 0]):
+#         """
+#         Draws a simple representation of the goal as crosshairs in the PyBullet simulation.
+#         """
+#         # Clear previous markers
+#         self.clear_goal_markers()
+
+#         # Draw crosshairs to represent the goal position
+#         axis_lines = [
+#             ([goal_position[0] - radius, goal_position[1], goal_position[2]],
+#             [goal_position[0] + radius, goal_position[1], goal_position[2]]),
+#             ([goal_position[0], goal_position[1] - radius, goal_position[2]],
+#             [goal_position[0], goal_position[1] + radius, goal_position[2]]),
+#             ([goal_position[0], goal_position[1], goal_position[2] - radius],
+#             [goal_position[0], goal_position[1], goal_position[2] + radius]),
+#         ]
+
+#         for start, end in axis_lines:
+#             marker_id = p.addUserDebugLine(start, end, lineColorRGB=color, lineWidth=2.0)
+#             self.goal_marker_ids.append(marker_id)
+
+
+#     def clear_goal_markers(self):
+#         """
+#         Removes all previous goal markers from the simulation.
+#         """
+#         for marker_id in self.goal_marker_ids:
+#             p.removeUserDebugItem(marker_id)
+#         self.goal_marker_ids = []
+
+
 if __name__ == '__main__':
     from stable_baselines3.common.env_checker import check_env
 
@@ -192,4 +211,3 @@ if __name__ == '__main__':
 
     # Assuming 'wrapped_env' is your wrapped environment instance
     check_env(wrapped_env)
-    
