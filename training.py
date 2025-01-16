@@ -15,12 +15,11 @@ parser.add_argument("--learning_rate", type=float, default=0.0003)
 parser.add_argument("--batch_size", type=int, default=64)
 parser.add_argument("--n_steps", type=int, default=2048)
 parser.add_argument("--n_epochs", type=int, default=10)
-parser.add_argument("--milestones", type=list, default=[round(i * 0.05, 2) for i in range(1, 20)])
 
 args = parser.parse_args()
 
 task = Task.init(project_name='Mentor Group J/Group 3', # NB: Replace YourName with your own name
-                    task_name='Baseline')
+                    task_name='baseline eucludian distance')
 
 task.set_base_docker('deanis/2023y2b-rl:latest')
 
@@ -28,7 +27,7 @@ task.execute_remotely(queue_name="default")
 
 os.environ['WANDB_API_KEY'] = '118175988af2b259ce56714ba8a38955d33c1939'
 
-env = OT2_wrapper(args.milestones, max_steps=1000)
+env = OT2_wrapper(max_steps=1000)
 model = PPO('MlpPolicy', env, verbose=1)
 
 # initialize wandb project
