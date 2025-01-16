@@ -158,7 +158,6 @@ class OT2_wrapper(gym.Env):
             Terminated, bool: If the model has been terminated or not
             Terminated_reason, string: Reason of termination
         """
-        print(distance, self.distance_threshold)
         if distance < self.distance_threshold:
             reward = 100
             return True, "goal_reached", reward
