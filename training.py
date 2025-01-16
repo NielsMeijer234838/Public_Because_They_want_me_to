@@ -18,12 +18,12 @@ parser.add_argument("--n_epochs", type=int, default=10)
 
 args = parser.parse_args()
 
-# task = Task.init(project_name='Mentor Group J/Group 3', # NB: Replace YourName with your own name
-#                      task_name='baseline eucludian distance')
+task = Task.init(project_name='Mentor Group J/Group 3', # NB: Replace YourName with your own name
+                     task_name='baseline eucludian distance')
 
-# task.set_base_docker('deanis/2023y2b-rl:latest')
+task.set_base_docker('deanis/2023y2b-rl:latest')
 
-# task.execute_remotely(queue_name="default")
+task.execute_remotely(queue_name="default")
 
 os.environ['WANDB_API_KEY'] = '118175988af2b259ce56714ba8a38955d33c1939'
 

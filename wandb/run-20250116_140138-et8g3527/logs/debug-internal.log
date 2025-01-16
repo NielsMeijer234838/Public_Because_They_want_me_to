@@ -1,0 +1,17 @@
+{"time":"2025-01-16T14:01:38.016962053+01:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2025-01-16T14:01:38.016978644+01:00","level":"INFO","msg":"created symlink","path":"/home/ketamine/Documents/Buas/Year2/Training_remote/Public_Because_They_want_me_to/wandb/run-20250116_140138-et8g3527/logs/debug-core.log"}
+{"time":"2025-01-16T14:01:38.120647022+01:00","level":"INFO","msg":"created new stream","id":"et8g3527"}
+{"time":"2025-01-16T14:01:38.120676598+01:00","level":"INFO","msg":"stream: started","id":"et8g3527"}
+{"time":"2025-01-16T14:01:38.120702988+01:00","level":"INFO","msg":"handler: started","stream_id":"et8g3527"}
+{"time":"2025-01-16T14:01:38.121005881+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"et8g3527"}
+{"time":"2025-01-16T14:01:38.121012804+01:00","level":"INFO","msg":"sender: started","stream_id":"et8g3527"}
+{"time":"2025-01-16T14:01:38.52366124+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-16T14:01:48.656577498+01:00","level":"INFO","msg":"tensorboard: no root directory after 10 seconds, using working directory"}
+{"time":"2025-01-16T14:01:55.808848095+01:00","level":"INFO","msg":"stream: closing","id":"et8g3527"}
+{"time":"2025-01-16T14:01:55.808906796+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-16T14:01:55.809692572+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-16T14:01:56.802862274+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-16T14:01:57.211861879+01:00","level":"INFO","msg":"handler: closed","stream_id":"et8g3527"}
+{"time":"2025-01-16T14:01:57.211881936+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"et8g3527"}
+{"time":"2025-01-16T14:01:57.211905631+01:00","level":"INFO","msg":"sender: closed","stream_id":"et8g3527"}
+{"time":"2025-01-16T14:01:57.211941248+01:00","level":"INFO","msg":"stream: closed","id":"et8g3527"}
