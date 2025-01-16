@@ -18,6 +18,7 @@ parser.add_argument("--n_epochs", type=int, default=10)
 
 args = parser.parse_args()
 
+
 task = Task.init(project_name='Mentor Group J/Group 3', # NB: Replace YourName with your own name
                      task_name='baseline eucludian distance')
 
