@@ -142,7 +142,7 @@ class OT2_wrapper(gym.Env):
         distance = np.linalg.norm(observation[:3] - observation[3:6])
         distance_penalty = distance
 
-        return -distance_penalty
+        return -distance_penalty, distance
 
 
     def check_termination(self, distance):
