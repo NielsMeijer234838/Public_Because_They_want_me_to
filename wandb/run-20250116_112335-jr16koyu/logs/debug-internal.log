@@ -1,0 +1,9 @@
+{"time":"2025-01-16T11:23:35.299301191+01:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2025-01-16T11:23:35.299314042+01:00","level":"INFO","msg":"created symlink","path":"/home/ketamine/Documents/Buas/Year2/Training_remote/Public_Because_They_want_me_to/wandb/run-20250116_112335-jr16koyu/logs/debug-core.log"}
+{"time":"2025-01-16T11:23:35.401512002+01:00","level":"INFO","msg":"created new stream","id":"jr16koyu"}
+{"time":"2025-01-16T11:23:35.401540638+01:00","level":"INFO","msg":"stream: started","id":"jr16koyu"}
+{"time":"2025-01-16T11:23:35.401558657+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"jr16koyu"}
+{"time":"2025-01-16T11:23:35.401679484+01:00","level":"INFO","msg":"sender: started","stream_id":"jr16koyu"}
+{"time":"2025-01-16T11:23:35.401709028+01:00","level":"INFO","msg":"handler: started","stream_id":"jr16koyu"}
+{"time":"2025-01-16T11:23:35.772989304+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-16T11:23:46.378834877+01:00","level":"INFO","msg":"tensorboard: no root directory after 10 seconds, using working directory"}

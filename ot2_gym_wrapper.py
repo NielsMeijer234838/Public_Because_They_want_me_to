@@ -106,7 +106,9 @@ class OT2_wrapper(gym.Env):
         # EXPERIMENT HERE <3
         reward, distance = self.compute_reward(observation)
 
-        terminated, termination_reason = self.check_termination(reward)
+        terminated, termination_reason, bonus = self.check_termination(distance)
+
+        reward += bonus
 
         # Truncate the training episode if the maximum of steps is reached
         # Because the step() function requires a dictionary to be returned with info no matter the outcome we return some useful information
@@ -156,9 +158,11 @@ class OT2_wrapper(gym.Env):
             Terminated, bool: If the model has been terminated or not
             Terminated_reason, string: Reason of termination
         """
+        print(distance, self.distance_threshold)
         if distance < self.distance_threshold:
-            return True, "goal_reached"
-        return False, None
+            reward = 100
+            return True, "goal_reached", reward
+        return False, None, 0
     
     def close(self):
         """Closes the simulation

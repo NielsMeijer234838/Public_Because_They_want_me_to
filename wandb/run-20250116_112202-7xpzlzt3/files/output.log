@@ -1,0 +1,25 @@
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+Logging to runs/7xpzlzt3/runs/7xpzlzt3_0
+[2KTraceback (most recent call last):━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+[2K  File "/home/ketamine/Documents/Buas/Year2/Training_remote/Public_Because_They_want_me_to/training.py", line 51, in <module>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    model.learn(total_timesteps=5000000, callback=wandb_callback, progress_bar=True, reset_num_timesteps=False,tb_log_name=f"runs/{run.id}")
+[2K  File "/home/ketamine/.conda/envs/Test_pybullet/lib/python3.10/site-packages/stable_baselines3/ppo/ppo.py", line 311, in learn━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    return super().learn(
+[2K  File "/home/ketamine/.conda/envs/Test_pybullet/lib/python3.10/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 323, in learn━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    continue_training = self.collect_rollouts(self.env, callback, self.rollout_buffer, n_rollout_steps=self.n_steps)
+[2K  File "/home/ketamine/.conda/envs/Test_pybullet/lib/python3.10/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 218, in collect_rollouts━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    new_obs, rewards, dones, infos = env.step(clipped_actions)
+[2K  File "/home/ketamine/.conda/envs/Test_pybullet/lib/python3.10/site-packages/stable_baselines3/common/vec_env/base_vec_env.py", line 206, in step━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    return self.step_wait()
+[2K  File "/home/ketamine/.conda/envs/Test_pybullet/lib/python3.10/site-packages/stable_baselines3/common/vec_env/dummy_vec_env.py", line 70, in step_wait━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    obs, self.reset_infos[env_idx] = self.envs[env_idx].reset()
+[2K  File "/home/ketamine/.conda/envs/Test_pybullet/lib/python3.10/site-packages/stable_baselines3/common/monitor.py", line 83, in reset━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    return self.env.reset(**kwargs)
+[2K  File "/home/ketamine/Documents/Buas/Year2/Training_remote/Public_Because_They_want_me_to/ot2_gym_wrapper.py", line 60, in reset━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    status = self.sim.reset(num_agents=1)
+[2K  File "/home/ketamine/Documents/Buas/Year2/Training_remote/Public_Because_They_want_me_to/sim_class.py", line 175, in reset━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+    p.removeBody(robotId)
+[2KKeyboardInterrupt;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
+[35m   0%[0m [38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18/5,000,000 [0m [ [33m0:00:08[0m < [36m674:17:29[0m , [31m2 it/s[0m ]
