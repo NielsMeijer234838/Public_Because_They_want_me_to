@@ -13,7 +13,7 @@ class OT2_wrapper(gym.Env):
 
         # Overwrites render method but I do not know why, The mentors provided this
         self.render = render 
-        self.distance_threshold = 3.9e-3
+        self.distance_threshold = 0.0001
 
         # Sets some properties that are used during the training of a model
         self.max_steps = max_steps

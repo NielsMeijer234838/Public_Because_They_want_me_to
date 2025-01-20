@@ -8,8 +8,6 @@ from clearml import Task
 from typing_extensions import TypeIs
 import tensorflow
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--learning_rate", type=float, default=0.0003)
 parser.add_argument("--batch_size", type=int, default=64)
