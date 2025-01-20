@@ -18,7 +18,7 @@ args = parser.parse_args()
 
 
 task = Task.init(project_name='Mentor Group J/Group 3', # NB: Replace YourName with your own name
-                     task_name='big batch size')
+                     task_name='adjusted bounds')
 
 task.set_base_docker('deanis/2023y2b-rl:latest')
 

@@ -1,3 +1,4 @@
+from turtle import position
 from grpc import Status
 import gymnasium as gym
 from gymnasium import spaces
@@ -50,11 +51,11 @@ class OT2_wrapper(gym.Env):
 
         # Minimum and maximum gotten from task 9
         # These make sure that the goal generated are within the working envelope of the OT2
-        low_bound = [-0.187, -0.1705, 0.1695]
-        high_bound = [0.253, 0.2195, 0.2908]
+        low_bound = [-0.17, -0.16, 0.16]
+        high_bound = [0.24, 0.21, 0.28]
 
         # Generates a 3 random numbers according to the observation space definition
-        self.goal_position = np.random.uniform(low=low_bound, high=high_bound, size=(3,))
+        self.goal_position = np.random.uniform(low=low_bound, high=high_bound, size=(3,)).astype(np.float32)
 
         # This resets the simulation so it always has a fresh start
         status = self.sim.reset(num_agents=1)
@@ -64,8 +65,9 @@ class OT2_wrapper(gym.Env):
         robot_id = list(status.keys())[0]
 
         # Observation is set to the pipette position and goal is appended, This results in a array of (6,) np.float32's
-        observation = np.array(status[robot_id]['pipette_position'])
-        observation = np.concatenate([observation, self.goal_position])
+        observation = []
+        position = np.array(status[robot_id]['pipette_position'], dtype=np.float32)
+        observation = np.concatenate([position, self.goal_position]).astype(np.float32)
 
         # Everytime the simulation is reset for whatever reason the current amount of used steps need to be reset
         self.steps = 0
@@ -74,65 +76,41 @@ class OT2_wrapper(gym.Env):
         return observation, {}
 
 
-    def step(self, action):
-        """Controls the steps and training flow of the reinforcement model
+    def step(self, action: np.ndarray):
+        action = np.clip(action, self.action_space.low, self.action_space.high)  # Validate action
+        action = np.append(action, 0)  # Add drop action
+        
+        try:
+            observation_data = self.sim.run([action])
+        except Exception as e:
+            raise RuntimeError(f"Simulation failed: {e}")
 
-        Args:
-            action (List[List]): A list of list containing the x, y and z velocities of the OT2 robot
+        robot_id = list(observation_data.keys())[0]
+        observation = []
+        position = np.array(observation_data[robot_id]['pipette_position'], dtype=np.float32)
+        observation = np.concatenate([position, self.goal_position])
 
-        Returns:
-            Observation, List: Contains the xyz coordinates of the pipette and goal
-            reward, np.float32: The calculated reward for the model
-            terminated, bool: If the episode has been terminated or not
-            truncated, bool: If the episode has been truncated or not
-            info, dict: Information about termination, truncation or information about the current progress of the episode
-        """
-        # Execute one time step within the environment
-        # since we are only controlling the pipette position, we accept 3 values for the action and need to append 0 for the drop action
-        action = np.append(action, 0)
-
-        # Call the environment step function
-        # Action is passed on as a list because the apply_actions method in sim_class uses this list to define actions for multiple agents
-        observation = self.sim.run([action])
-
-        # as np.array get pipette coordinates
-        robot_id = list(observation.keys())[0]
-
-        # 
-        observation = np.array(observation[robot_id]['pipette_position'])
-
-        observation = np.concatenate([observation, self.goal_position])
-
-        # EXPERIMENT HERE <3
-        reward, distance = self.compute_reward(observation)
-
+        reward, distance = self.compute(observation)
         terminated, termination_reason, bonus = self.check_termination(distance)
-
         reward += bonus
 
-        # Truncate the training episode if the maximum of steps is reached
-        # Because the step() function requires a dictionary to be returned with info no matter the outcome we return some useful information
-        if self.steps == self.max_steps:
-            truncated = True
-            info = {'Truncated': 'Max steps reached'}
-        else:
-            truncated = False
-
-        if terminated:
-            info = {'Terminated': termination_reason}
-
-        # If the process is not truncated or terminated we return information about the progress of the model
-        if not terminated and not truncated:
-            info = {'Pipette coordinates': observation[:3], 'Distance from goal': distance, 'Reward': reward}
+        truncated = self.steps >= self.max_steps
+        info = {
+            'Truncated': 'Max steps reached' if truncated else None,
+            'Terminated': termination_reason if terminated else None,
+            'Pipette coordinates': observation[:3],
+            'Distance from goal': distance,
+            'Reward': reward
+        }
 
         self.steps += 1
-
         return observation, reward, terminated, truncated, info
+
 
     def render(self, mode='human'):
         pass
 
-    def compute_reward(self, observation):
+    def compute(self, observation):
         """Computes the reward for the Reinforcement learning model
 
         Args:
