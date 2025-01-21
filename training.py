@@ -41,8 +41,9 @@ wandb_callback = WandbCallback(model_save_freq=20000,
 
 dynamic_distance_reward = RewardShapingCallback()
 dynamic_speed_reward = AdaptiveThresholdCallback()
+curriculum_callback = CurriculumCallback()
 
-model.learn(total_timesteps=5000000, callback=[dynamic_distance_reward, dynamic_speed_reward, wandb_callback], 
+model.learn(total_timesteps=5000000, callback=[dynamic_distance_reward, curriculum_callback, wandb_callback], 
             progress_bar=True, reset_num_timesteps=False, 
             tb_log_name=f"runs/{run.id}")
 
