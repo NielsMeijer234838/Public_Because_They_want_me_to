@@ -1,11 +1,10 @@
-from turtle import position
 from grpc import Status
 import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
 from sim_class import Simulation
 import pybullet as p
-
+from stable_baselines3.common.callbacks import BaseCallback
 
 class OT2_wrapper(gym.Env):
     def __init__(self, render=False, max_steps=1000):
@@ -14,7 +13,7 @@ class OT2_wrapper(gym.Env):
 
         # Overwrites render method but I do not know why, The mentors provided this
         self.render = render 
-        self.distance_threshold = 0.0001
+        self.distance_threshold = 0.01
 
         # Sets some properties that are used during the training of a model
         self.max_steps = max_steps
@@ -74,6 +73,15 @@ class OT2_wrapper(gym.Env):
 
         # The Gymnasium expects the observations to be returned and a dictionary with info, We do not provide any info in this fuction so a empty dictionary is returned to avoid errors
         return observation, {}
+    
+    def update_distance_threshold(self, success_rate):
+        """Update the distance threshold based on the success rate."""
+        if success_rate > 0.8:  # Reduce threshold if success rate is high
+            self.distance_threshold = max(
+                self.min_threshold, self.distance_threshold * self.threshold_decay
+            )
+        elif success_rate < 0.2:  # Increase threshold if success rate is low
+            self.distance_threshold *= 1.01  # Make the task easier
 
 
     def step(self, action: np.ndarray):
@@ -121,9 +129,11 @@ class OT2_wrapper(gym.Env):
         """
         # Eucludian distance, hell yeah https://www.tiktok.com/@sivartstock/video/7264039747142618373
         distance = np.linalg.norm(observation[:3] - observation[3:6])
-        distance_penalty = distance
+        previous_distance = getattr(self, 'previous_distance', distance)
+        reward = previous_distance - distance  # Reward improvement
+        self.previous_distance = distance  # Update for next step
+        return reward, distance
 
-        return -distance_penalty, distance
 
 
     def check_termination(self, distance):
@@ -146,50 +156,75 @@ class OT2_wrapper(gym.Env):
         """
         self.sim.close()
 
-# class GoalVisualizer:
-#     def __init__(self, simulation):
-#         """
-#         Initialize the visualizer with a PyBullet simulation object.
-#         """
-#         self.sim = simulation
-#         self.goal_marker_ids = []  # To track debug items for cleanup
+class RewardShapingCallback(BaseCallback):
+    def __init__(self, verbose=0):
+        super(RewardShapingCallback, self).__init__(verbose)
 
-#     def draw_goal(self, goal_position, radius=0.05, color=[0, 1, 0]):
-#         """
-#         Draws a simple representation of the goal as crosshairs in the PyBullet simulation.
-#         """
-#         # Clear previous markers
-#         self.clear_goal_markers()
-
-#         # Draw crosshairs to represent the goal position
-#         axis_lines = [
-#             ([goal_position[0] - radius, goal_position[1], goal_position[2]],
-#             [goal_position[0] + radius, goal_position[1], goal_position[2]]),
-#             ([goal_position[0], goal_position[1] - radius, goal_position[2]],
-#             [goal_position[0], goal_position[1] + radius, goal_position[2]]),
-#             ([goal_position[0], goal_position[1], goal_position[2] - radius],
-#             [goal_position[0], goal_position[1], goal_position[2] + radius]),
-#         ]
-
-#         for start, end in axis_lines:
-#             marker_id = p.addUserDebugLine(start, end, lineColorRGB=color, lineWidth=2.0)
-#             self.goal_marker_ids.append(marker_id)
+    def _on_step(self) -> bool:
+        env = self.training_env.envs[0]
+        if isinstance(env, OT2_wrapper):
+            env.distance_threshold = max(0.0001, env.distance_threshold * 0.999)
+            # Adjust reward multiplier
+            env.reward_scale = getattr(env, 'reward_scale', 1.0) * 1.01
 
 
-#     def clear_goal_markers(self):
-#         """
-#         Removes all previous goal markers from the simulation.
-#         """
-#         for marker_id in self.goal_marker_ids:
-#             p.removeUserDebugItem(marker_id)
-#         self.goal_marker_ids = []
+        return True
+    
+class CurriculumCallback(BaseCallback):
+    def __init__(self, verbose=0):
+        super(CurriculumCallback, self).__init__(verbose)
+        self.success_buffer = []
+        self.target_success_rate = 0.8  # Aim for 80% success rate
+        self.buffer_size = 100  # Sliding window size for calculating success rate
+
+    def _on_step(self) -> bool:
+        # Access the environment
+        env = self.training_env.envs[0]  # Assuming a single environment
+        if isinstance(env, OT2_wrapper):
+            # Check if the current episode ended with success
+            success = any(info.get("Terminated") == "goal_reached" for info in self.locals["infos"])
+            self.success_buffer.append(success)
+
+            # Keep the buffer size fixed
+            if len(self.success_buffer) > self.buffer_size:
+                self.success_buffer.pop(0)
+
+            # Calculate success rate and update the distance threshold
+            if len(self.success_buffer) == self.buffer_size:
+                success_rate = sum(self.success_buffer) / self.buffer_size
+                env.update_distance_threshold(success_rate)
+
+        return True
+
+
+class AdaptiveThresholdCallback(BaseCallback):
+    def __init__(self, verbose=0):
+        super(AdaptiveThresholdCallback, self).__init__(verbose)
+        self.target_success_rate = 0.8  # Aim for 80% success rate
+        self.success_buffer = []
+
+    def _on_step(self) -> bool:
+        env = self.training_env.envs[0]
+        if isinstance(env, OT2_wrapper):
+            success = any(info.get("Terminated") == "goal_reached" for info in self.locals["infos"])
+            self.success_buffer.append(success)
+
+            # Adjust distance threshold based on recent success rate
+            if len(self.success_buffer) > 100:  # Buffer size
+                success_rate = sum(self.success_buffer) / len(self.success_buffer)
+                if success_rate > self.target_success_rate:
+                    env.distance_threshold *= 0.99  # Make task harder
+                else:
+                    env.distance_threshold *= 1.01  # Make task easier
+                self.success_buffer.pop(0)
+        return True
 
 
 if __name__ == '__main__':
     from stable_baselines3.common.env_checker import check_env
 
     # instantiate your custom environment
-    wrapped_env = OT2_wrapper([0.05, 0.7]) # modify this to match your wrapper class
+    wrapped_env = OT2_wrapper() # modify this to match your wrapper class
 
     # Assuming 'wrapped_env' is your wrapped environment instance
     check_env(wrapped_env)
